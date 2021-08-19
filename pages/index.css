@@ -5,3 +5,22 @@
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/logo/logo.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__image/profile__image.css);
+@import url(../blocks/profile/__info/);
+
+@import url(../blocks/profile/__add-botton/);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__info/__name/info__name.css);
+@import url(../blocks/profile/__info/__about/info__about.css);
+@import url(../blocks/profile/__info/__edit/info__edit.css);
+@import url(../blocks/profile/__add-botton/profile__add-botton.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__item/cards__item.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/__about/cards__about.css);
+@import url(../blocks/cards/__title/cards__title.css);
+@import url(../blocks/cards/__heart-like/cards__heart-like.css);

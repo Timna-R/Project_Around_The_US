@@ -6,3 +6,23 @@
     align-content: center;
     border-bottom: 1px solid #545454;
 }
+
+@media screen and (max-width: 1024px) {
+    .header {
+        max-width: 660px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        max-width: 580px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .header {
+        max-width: 282px;
+        height: 56px;
+        padding-top: 28px;
+    }
+}

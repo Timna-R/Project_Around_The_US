@@ -1,0 +1,22 @@
+.cards {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px) {
+    .cards {
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards {
+        justify-content: space-between;
+    }
+}

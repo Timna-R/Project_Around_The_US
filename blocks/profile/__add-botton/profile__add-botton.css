@@ -1,0 +1,27 @@
+.profile__add-botton {
+    width: 150px;
+    height: 50px;
+    background-image: url(../../../images/white-plus_optimized.png);
+    background-repeat: no-repeat;
+    object-fit: contain;
+    background-position: center;
+    border: 1px solid white;
+    opacity: 1;
+}
+
+.profile__add-botton:hover {
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__add-botton {
+        width: 100px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .profile__add-botton {
+        width: 100%;
+    }
+}

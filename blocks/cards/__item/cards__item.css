@@ -1,0 +1,9 @@
+.cards__item {
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.cards__item:nth-child() {
+    margin-right: 0;
+  }

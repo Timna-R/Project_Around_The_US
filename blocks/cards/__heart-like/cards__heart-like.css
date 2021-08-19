@@ -1,0 +1,9 @@
+.cards__heart-like {
+    background-repeat: no-repeat;
+    object-fit: contain;
+    opacity: 1;
+}
+
+.cards__heart-like:hover {
+    opacity: 0.5;
+}
