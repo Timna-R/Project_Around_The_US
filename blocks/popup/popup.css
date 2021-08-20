@@ -1,13 +1,13 @@
-.profile-form {
+.popup {
     position: fixed;
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    display: none;
 }
 
-.profile-form::after{
+.popup::after{
     content: "";
     background: black;
     width: 100%;
