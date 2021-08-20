@@ -11,12 +11,14 @@
 
 @media screen and (max-width: 1024px) {
     .cards {
-        justify-content: space-around;
+        justify-content: center;
+        gap: 25px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .cards {
         justify-content: space-between;
+        gap: 0;
     }
 }
