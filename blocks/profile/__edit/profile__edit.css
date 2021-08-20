@@ -1,8 +1,8 @@
-.info__edit {
+.profile__edit {
     width: 24px;
     height: 24px;
     margin: 14px 0 0 18px;
-    background-image: url(../../../../images/white-pen_optimized.png);
+    background-image: url(../../../images/white-pen_optimized.png);
     background-repeat: no-repeat;
     object-fit: contain;
     background-position: center;
@@ -10,12 +10,12 @@
     opacity: 1;
 }
 
-.info__edit:hover {
+.profile__edit:hover {
     opacity: 0.5;
 }
 
 @media screen and (max-width: 630px) {
-    .info__edit {
+    .profile__edit {
         width: 18px;
         height: 18px;
         margin: 0 0 0 10px;

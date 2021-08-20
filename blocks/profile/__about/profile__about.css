@@ -1,4 +1,4 @@
-.info__about {
+.profile__about {
     margin: 0;
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 630px) {
-    .info__about {
+    .profile__about {
         font-size: 14px;
         line-height: 17px;
         text-align: center;
