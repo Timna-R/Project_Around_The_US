@@ -7,7 +7,12 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
-    border:none;
+    border: none;
     border-bottom: 1px solid #00000033;
     outline: none;
+}
+
+@media screen and (max-width: 630px) {
+    .form__input {
+        height: 17px;
 }

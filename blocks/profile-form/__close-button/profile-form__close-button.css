@@ -13,3 +13,14 @@
 .profile-form__close-button:hover {
     opacity: 0.5;
 }
+
+@media screen and (max-width: 630px) {
+    .profile-form__close-button {
+        width: 37px;
+        min-height: 370px;
+        background-size: 37px 37px;
+        object-fit: contain;
+        right: -5px;
+        top: -50px;
+    }
+}
