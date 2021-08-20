@@ -1,6 +1,7 @@
 .profile__info {
     display: flex;
-    margin: auto 18.7% auto 3.4%;
+    margin: auto 17% auto 2%;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 1024px) {
