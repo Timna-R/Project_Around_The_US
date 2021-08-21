@@ -10,12 +10,12 @@
 
   <div class="popup">
     <div class="popup__container">
-      <div class="popup__close-button"></div>
-      <h3 class="popup__title">Edit profile</h3>
-      <form class="form">
+      <button type="button" class="popup__close-button" aria-label="close button"></button>
+      <h2 class="popup__title">Edit profile</h2>
+      <form class="form" name="form">
         <input type="text" class="form__input form__input_type_name" name="name" placeholder="name">
         <input type="text" class="form__input form__input_type_about" name="about" placeholder="about">
-        <button type="submit" class="form__button">Save</button>
+        <button type="submit" class="form__button" aria-label="submit button">Save</button>
       </form> 
     </div>
   </div>
@@ -26,58 +26,58 @@
     </header>
     <main class="content">
       <section class="profile">
-        <div class="profile__image"></div>
-        <div class="profile__info">
-          <div>
-            <h2 class="profile__name">Jacques Cousteau</h2>
-            <p class="profile__about">Explorer</p>
+          <div class="profile__image"></div>
+          <div class="profile__info">
+            <div>
+              <h1 class="profile__name">Jacques Cousteau</h1>
+              <p class="profile__about">Explorer</p>
+            </div>
+            <button type="button" class="profile__edit" aria-label="edit profile button"></button>
           </div>
-          <div class="profile__edit"></div>
-        </div>
-        <div class="profile__add-botton"></div>
+        <button type="button" class="profile__add-botton" aria-label="edit image button"></button>
       </section>
       <section class="elements">
         <ul class="cards">
           <li class="cards__item">
-            <img class="cards__image" src="./images/kirill-pershin-Yosemite Valley_optimized.jpg" alt="A river with trees on the sides">
+            <img class="cards__image" src="./images/kirill-pershin-Yosemite_Valley_optimized.jpg" alt="A river with trees on the sides">
             <div class="cards__about">
-              <h3 class="cards__title">Yosemite Valley</h3>
-              <img class="cards__heart-like" src="./images/white-heart_optimized.png" alt="White heart shape with black frame">
+              <h2 class="cards__title">Yosemite Valley</h2>
+              <button type="button" class="cards__heart-like"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img class="cards__image" src="./images/kirill-pershin-Lake Louise_optimized.jpg" alt="View of Lake louise with blue and snowy mountains behind">
+            <img class="cards__image" src="./images/kirill-pershin-Lake_Louise_optimized.jpg" alt="View of Lake louise with blue and snowy mountains behind">
             <div class="cards__about">
-              <h3 class="cards__title">Lake Louise</h3>
-              <img class="cards__heart-like" src="./images/white-heart_optimized.png" alt="White heart shape with black frame">
+              <h2 class="cards__title">Lake Louise</h2>
+              <button type="button" class="cards__heart-like"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img class="cards__image" src="./images/kirill-pershin-Bald Mountains_optimized.jpg" alt="Mountain view at sunrise with sun">
+            <img class="cards__image" src="./images/kirill-pershin-Bald_Mountains_optimized.jpg" alt="Mountain view at sunrise with sun">
             <div class="cards__about">
-              <h3 class="cards__title">Bald Mountains</h3>
-              <img class="cards__heart-like" src="./images/white-heart_optimized.png" alt="White heart shape with black frame">
+              <h2 class="cards__title">Bald Mountains</h2>
+              <button type="button" class="cards__heart-like"></button>
             </div>
           </li>
           <li class="cards__item">
             <img class="cards__image" src="./images/kirill-pershin-Latemar_optimized.jpg" alt="Mountain view at night with stars">
             <div class="cards__about">
-              <h3 class="cards__title">Latemar</h3>
-              <img class="cards__heart-like" src="./images/white-heart_optimized.png" alt="White heart shape with black frame">
+              <h2 class="cards__title">Latemar</h2>
+              <button type="button" class="cards__heart-like"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img class="cards__image" src="./images/kirill-pershin-Vanoise Nationa.._optimized.jpg" alt="A lake with mountains behind it">
+            <img class="cards__image" src="./images/kirill-pershin-Vanoise_Nationa.._optimized.jpg" alt="A lake with mountains behind it">
             <div class="cards__about">
-              <h3 class="cards__title">Vanoise Nationa...</h3>
-              <img class="cards__heart-like" src="./images/white-heart_optimized.png" alt="White heart shape with black frame">
+              <h2 class="cards__title">Vanoise Nationa...</h2>
+              <button type="button" class="cards__heart-like"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img class="cards__image" src="./images/kirill-pershin-Lago di Braies_optimized.jpg" alt="A river with wooden boats parked behind it are slightly snowy mountains">
+            <img class="cards__image" src="./images/kirill-pershin-Lago_di_Braies_optimized.jpg" alt="A river with wooden boats parked behind it are slightly snowy mountains">
             <div class="cards__about">
-              <h3 class="cards__title">Lago di Braies</h3>
-              <img class="cards__heart-like" src="./images/white-heart_optimized.png" alt="White heart shape with black frame">
+              <h2 class="cards__title">Lago di Braies</h2>
+              <button type="button" class="cards__heart-like"></button>
             </div>
           </li>
         </ul>
@@ -85,9 +85,9 @@
       </section>
     </main>
     <footer class="footer">
-      <h3 class="footer__copyright">&copy; 2021 Around The U.S.</h3>
+      <p class="footer__copyright">&copy; 2021 Around The U.S.</p>
     </footer>
-  <script src="./index.js"></script>
   </div>
+  <script src="./index.js"></script>
 </body>
 </html>

@@ -1,9 +1,17 @@
 .cards__heart-like {
+    width: 21px;
+    height: 19px;
+    background-color: transparent;
+    border: none;
+    background-image: url(../../../images/white-heart_optimized.png);
+    box-sizing: border-box;
     background-repeat: no-repeat;
     object-fit: contain;
+    align-self: center;
     opacity: 1;
 }
 
 .cards__heart-like:hover {
     opacity: 0.5;
+    cursor: pointer;
 }
