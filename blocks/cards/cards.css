@@ -6,19 +6,18 @@
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 0 15px;
 }
 
 @media screen and (max-width: 1024px) {
     .cards {
-        justify-content: center;
-        gap: 25px;
+        gap: 0 35px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .cards {
-        justify-content: space-between;
-        gap: 0;
+        gap: 0 15px;
     }
 }
