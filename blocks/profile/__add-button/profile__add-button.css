@@ -1,4 +1,4 @@
-.profile__add-botton {
+.profile__add-button {
     min-width: 150px;
     min-height: 50px;
     background-color: transparent;
@@ -12,25 +12,25 @@
     border-radius: 2px;
 }
 
-.profile__add-botton:hover {
+.profile__add-button:hover {
     opacity: 0.6;
     cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {
-    .profile__add-botton {
+    .profile__add-button {
         min-width: 130px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .profile__add-botton {
+    .profile__add-button {
         min-width: 100px;
     }
 }
 
 @media screen and (max-width: 630px) {
-    .profile__add-botton {
+    .profile__add-button {
         min-width: 100%;
     }
 }

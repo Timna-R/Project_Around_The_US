@@ -3,7 +3,7 @@
     height: 19px;
     background-color: transparent;
     border: none;
-    background-image: url(../../../images/white-heart_optimized.png);
+    background-image: url(../../../images/empty-heart.svg);
     box-sizing: border-box;
     background-repeat: no-repeat;
     object-fit: contain;
@@ -12,6 +12,6 @@
 }
 
 .cards__heart-like:hover {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: pointer;
 }
