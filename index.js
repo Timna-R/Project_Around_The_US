@@ -1,29 +1,29 @@
 const initialCards = [
-    {
-      name: "Yosemite Valley",
-      link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-    },
-    {
-      name: "Lake Louise",
-      link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-    },
-    {
-      name: "Bald Mountains",
-      link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-    },
-    {
-      name: "Latemar",
-      link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-    },
-    {
-      name: "Vanoise National Park",
-      link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-    },
-    {
-      name: "Lago di Braies",
-      link: "https://code.s3.yandex.net/web-code/lago.jpg"
-    }
-  ];
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
 
 const editButton = document.querySelector(".profile__edit");
 const editPopup = document.querySelector(".popup_theme_edit");
@@ -70,11 +70,11 @@ function sendForm() {
   profileAbout.textContent = aboutValue;
 }
 function placeCard(item) {
-  const cardItem = cardTemplate.querySelector('.cards__item').cloneNode(true);
-  const cardImage = cardItem.querySelector('.cards__image');
-  const cardTitle = cardItem.querySelector('.cards__title');
-  const deleteButton = cardItem.querySelector('.cards__delete');
-  const likeButton = cardItem.querySelector('.cards__heart-like');
+  const cardItem = cardTemplate.querySelector(".cards__item").cloneNode(true);
+  const cardImage = cardItem.querySelector(".cards__image");
+  const cardTitle = cardItem.querySelector(".cards__title");
+  const deleteButton = cardItem.querySelector(".cards__delete");
+  const likeButton = cardItem.querySelector(".cards__heart-like");
   cardImage.style.backgroundImage = `url(${item.link})`;
   cardTitle.textContent = item.name;
   function fullLikeButton() {
@@ -82,16 +82,19 @@ function placeCard(item) {
   }
   likeButton.addEventListener("click", fullLikeButton);
   deleteButton.addEventListener("click", () => cardItem.remove());
-  cardImage.addEventListener("click", function() {
+  cardImage.addEventListener("click", function () {
     openPopupImage();
-    const imageValue = popupImage.querySelector('.popup__image').src = item.link;
-    const imageTitleValue = popupImage.querySelector('.popup__image-title').textContent = item.name;
+    const imageValue = (popupImage.querySelector(".popup__image").src =
+      item.link);
+    const imageTitleValue = (popupImage.querySelector(
+      ".popup__image-title"
+    ).textContent = item.name);
   });
   cardsList.prepend(cardItem);
 }
 
 initialCards.forEach(placeCard);
-editButton.addEventListener("click", function() {
+editButton.addEventListener("click", function () {
   openPopupEdit();
   const nameValue = profileName.textContent;
   const aboutValue = profileAbout.textContent;
@@ -99,21 +102,21 @@ editButton.addEventListener("click", function() {
   inputAbout.value = aboutValue;
 });
 addCardButton.addEventListener("click", () => {
-  openPopupCard()
-  addCardForm.reset()
+  openPopupCard();
+  addCardForm.reset();
 });
 
 closeButton.addEventListener("click", closePopupEdit);
 closeCardButton.addEventListener("click", closePopupCard);
 closeImageButton.addEventListener("click", closePopupImage);
 
-editForm.addEventListener("submit", function(e) {
+editForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  sendForm()
-  closePopupEdit()
+  sendForm();
+  closePopupEdit();
 });
-addCardForm.addEventListener("submit", function(e) {
+addCardForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  placeCard({name: inputCardTitle.value, link: inputImage.value});
+  placeCard({ name: inputCardTitle.value, link: inputImage.value });
   closePopupCard();
 });
