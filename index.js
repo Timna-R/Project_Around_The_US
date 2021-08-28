@@ -44,23 +44,12 @@ const profileAbout = document.querySelector(".profile__about");
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsList = document.querySelector(".cards");
 
-function openPopupEdit() {
-  editPopup.classList.add("popup_open");
+function openPopup(popup) {
+  popup.classList.add("popup_open");
 }
-function closePopupEdit() {
-  editPopup.classList.remove("popup_open");
-}
-function openPopupCard() {
-  addCardPopup.classList.add("popup_open");
-}
-function closePopupCard() {
-  addCardPopup.classList.remove("popup_open");
-}
-function openPopupImage() {
-  popupImage.classList.add("popup_open");
-}
-function closePopupImage() {
-  popupImage.classList.remove("popup_open");
+
+function closePopup(popup) {
+  popup.classList.remove("popup_open");
 }
 
 function sendForm() {
@@ -69,54 +58,71 @@ function sendForm() {
   profileName.textContent = nameValue;
   profileAbout.textContent = aboutValue;
 }
+
 function placeCard(item) {
-  const cardItem = cardTemplate.querySelector(".cards__item").cloneNode(true);
+  let cardItem = cardTemplate.querySelector(".cards__item").cloneNode(true);
   const cardImage = cardItem.querySelector(".cards__image");
   const cardTitle = cardItem.querySelector(".cards__title");
   const deleteButton = cardItem.querySelector(".cards__delete");
   const likeButton = cardItem.querySelector(".cards__heart-like");
-  cardImage.style.backgroundImage = `url(${item.link})`;
-  cardTitle.textContent = item.name;
-  function fullLikeButton() {
+  const imageTitleValue = popupImage.querySelector(".popup__image-title");
+  function handleLikeButtonClick() {
     likeButton.classList.toggle("cards__heart-like_full");
   }
-  likeButton.addEventListener("click", fullLikeButton);
-  deleteButton.addEventListener("click", () => cardItem.remove());
+
+  function deleteCardItem() {
+    cardItem.remove();
+    cardItem = null;
+  }
+
+  cardImage.style.backgroundImage = `url(${item.link})`;
+
+  cardTitle.textContent = item.name;
+
+  likeButton.addEventListener("click", handleLikeButtonClick);
+
+  deleteButton.addEventListener("click", deleteCardItem);
+
   cardImage.addEventListener("click", function () {
-    openPopupImage();
-    const imageValue = (popupImage.querySelector(".popup__image").src =
-      item.link);
-    const imageTitleValue = (popupImage.querySelector(
-      ".popup__image-title"
-    ).textContent = item.name);
+    openPopup(popupImage);
+    popupImage.querySelector(".popup__image").src = item.link;
+    popupImage.querySelector(".popup__image").alt = "";
+    imageTitleValue.textContent = item.name;
+    // After comment #test2, I'm back to comment #test1 (Gray note #Test1), hope I understood you.
   });
+
   cardsList.prepend(cardItem);
 }
 
 initialCards.forEach(placeCard);
+
 editButton.addEventListener("click", function () {
-  openPopupEdit();
+  openPopup(editPopup);
   const nameValue = profileName.textContent;
   const aboutValue = profileAbout.textContent;
   inputName.value = nameValue;
   inputAbout.value = aboutValue;
 });
+
 addCardButton.addEventListener("click", () => {
-  openPopupCard();
+  openPopup(addCardPopup);
   addCardForm.reset();
 });
 
-closeButton.addEventListener("click", closePopupEdit);
-closeCardButton.addEventListener("click", closePopupCard);
-closeImageButton.addEventListener("click", closePopupImage);
+closeButton.addEventListener("click", () => closePopup(editPopup));
+
+closeCardButton.addEventListener("click", () => closePopup(addCardPopup));
+
+closeImageButton.addEventListener("click", () => closePopup(popupImage));
 
 editForm.addEventListener("submit", function (e) {
   e.preventDefault();
   sendForm();
-  closePopupEdit();
+  closePopup(editPopup);
 });
+
 addCardForm.addEventListener("submit", function (e) {
   e.preventDefault();
   placeCard({ name: inputCardTitle.value, link: inputImage.value });
-  closePopupCard();
+  closePopup(addCardPopup);
 });

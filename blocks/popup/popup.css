@@ -8,7 +8,8 @@
     display: flex;
     visibility: hidden;
     opacity: 0;
-    transition: .3s ease-in-out; 
+    transition: .3s ease-in-out;
+    pointer-events: none;
 }
 
 .popup::after{
