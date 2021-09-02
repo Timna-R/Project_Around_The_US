@@ -74,7 +74,7 @@ function placeCard(item) {
     cardItem.remove();
     cardItem = null;
   }
-
+  
   cardImage.style.backgroundImage = `url(${item.link})`;
 
   cardTitle.textContent = item.name;
@@ -85,10 +85,10 @@ function placeCard(item) {
 
   cardImage.addEventListener("click", function () {
     openPopup(popupImage);
-    popupImage.querySelector(".popup__image").src = item.link;
-    popupImage.querySelector(".popup__image").alt = "";
+    const image = popupImage.querySelector(".popup__image");
+    image.src = item.link;
+    image.alt = "";
     imageTitleValue.textContent = item.name;
-    // After comment #test2, I'm back to comment #test1 (Gray note #Test1), hope I understood you.
   });
 
   cardsList.prepend(cardItem);
