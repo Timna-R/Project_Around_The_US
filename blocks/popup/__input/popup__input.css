@@ -1,7 +1,7 @@
-.form__input {
+.popup__input {
     height: 27px;
     color: black;
-    margin-bottom: 30px;
+    margin: 25px 0 5px;
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -12,8 +12,16 @@
     outline: none;
 }
 
+.popup__input:first-child {
+    margin-top: 0;
+}
+
+/* .popup__input:invalid {
+    border-bottom: 1px solid red
+} */
+
 @media screen and (max-width: 630px) {
-    .form__input {
+    .popup__input {
         height: 23px;
     }
 }

@@ -24,21 +24,22 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-
+const popupList = document.querySelectorAll(".popup");
 const editButton = document.querySelector(".profile__edit");
 const editPopup = document.querySelector(".popup_theme_edit");
 const closeButton = editPopup.querySelector(".popup__close-button");
-const editForm = editPopup.querySelector(".form");
-const inputName = document.querySelector(".form__input_type_name");
-const inputAbout = document.querySelector(".form__input_type_about");
+const editContainer = editPopup.querySelector(".popup__container_theme_edit");
+const editForm = editPopup.querySelector(".popup__form");
+const inputName = document.querySelector(".popup__input_type_name");
+const inputAbout = document.querySelector(".popup__input_type_about");
 const addCardButton = document.querySelector(".profile__add-button");
 const addCardPopup = document.querySelector(".popup_theme_add-card");
 const closeCardButton = addCardPopup.querySelector(".popup__close-button");
-const addCardForm = addCardPopup.querySelector(".form");
+const addCardForm = addCardPopup.querySelector(".popup__form");
 const popupImage = document.querySelector(".popup_theme_image");
 const closeImageButton = popupImage.querySelector(".popup__close-button");
-const inputCardTitle = document.querySelector(".form__input_type_card-title");
-const inputImage = document.querySelector(".form__input_type_image");
+const inputCardTitle = document.querySelector(".popup__input_type_card-title");
+const inputImage = document.querySelector(".popup__input_type_image");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
 const cardTemplate = document.querySelector("#card-template").content;
@@ -125,4 +126,21 @@ addCardForm.addEventListener("submit", function (e) {
   e.preventDefault();
   placeCard({ name: inputCardTitle.value, link: inputImage.value });
   closePopup(addCardPopup);
+});
+
+document.addEventListener("keydown", function (evt) {
+  const key = evt.key;
+  if (key === "Escape") {
+    popupList.forEach((popupItem) => {
+      closePopup(popupItem);
+    });
+  }
+});
+
+document.addEventListener("mouseup", function (evt) {
+  popupList.forEach((popupItem) => {
+    if (evt.target === popupItem) {
+      closePopup(popupItem);
+    }
+  });
 });
