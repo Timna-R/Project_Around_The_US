@@ -7,25 +7,27 @@ const settingsObj = {
     errorClass: "popup__error_visible",
   };
   
-  const showInputError = (formElement, inputElement, errorMessage) => {
+  const showInputError = (formElement, inputElement, errorMessage,  inputErrorClass, errorClass) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.add("popup__input_type_error");
+    inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add("popup__error_visible");
+    errorElement.classList.add(errorClass);
   };
   
-  const hideInputError = (formElement, inputElement) => {
+  const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.remove("popup__input_type_error");
-    errorElement.classList.remove("popup__error_visible");
+    inputElement.classList.remove(inputErrorClass);
+    errorElement.classList.remove(errorClass);
     errorElement.textContent = "";
   };
   
-  const checkInputValidity = (formElement, inputElement) => {
+  const checkInputValidity = (formElement, inputElement, settings) => {
+    const inputErrorClass = settings.inputErrorClass;
+    const errorClass = settings.errorClass;
     if (!inputElement.validity.valid) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
+      showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
     } else {
-      hideInputError(formElement, inputElement);
+      hideInputError(formElement, inputElement, inputErrorClass, errorClass);
     }
   };
   
@@ -66,7 +68,7 @@ const settingsObj = {
       //Call checkInputValidity each input element
       formInput.forEach((inputElement) => {
         inputElement.addEventListener("input", function () {
-          checkInputValidity(formElement, inputElement);
+          checkInputValidity(formElement, inputElement, settings);
           toggleButtonState(formInput, submitButton, inactiveButton);
         });
       });

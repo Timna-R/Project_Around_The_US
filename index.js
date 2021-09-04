@@ -24,7 +24,7 @@ const initialCards = [
     link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
-const popupList = document.querySelectorAll(".popup");
+
 const editButton = document.querySelector(".profile__edit");
 const editPopup = document.querySelector(".popup_theme_edit");
 const closeButton = editPopup.querySelector(".popup__close-button");
@@ -47,13 +47,15 @@ const cardsList = document.querySelector(".cards");
 
 function openPopup(popup) {
   popup.classList.add("popup_open");
+  document.addEventListener('keydown', closeOnEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_open");
+  document.removeEventListener('keydown', closeOnEscape);
 }
 
-function sendForm() {
+function submitProfileForm() {
   const nameValue = inputName.value;
   const aboutValue = inputAbout.value;
   profileName.textContent = nameValue;
@@ -118,7 +120,7 @@ closeImageButton.addEventListener("click", () => closePopup(popupImage));
 
 editForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  sendForm();
+  submitProfileForm();
   closePopup(editPopup);
 });
 
@@ -128,19 +130,18 @@ addCardForm.addEventListener("submit", function (e) {
   closePopup(addCardPopup);
 });
 
-document.addEventListener("keydown", function (evt) {
+function closeOnEscape(evt) {
   const key = evt.key;
-  if (key === "Escape") {
-    popupList.forEach((popupItem) => {
-      closePopup(popupItem);
-    });
-  }
-});
+    if (key === "Escape") {
+      closePopup(document.querySelector('.popup_open'));
+    }
+}
 
 document.addEventListener("mouseup", function (evt) {
-  popupList.forEach((popupItem) => {
-    if (evt.target === popupItem) {
-      closePopup(popupItem);
+  const popupOpened = document.querySelector('.popup_open');
+  if (popupOpened) {
+    if (evt.target === popupOpened) {
+      closePopup(popupOpened);
     }
-  });
+  }
 });
