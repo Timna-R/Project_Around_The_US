@@ -33,6 +33,8 @@
     Another javascreept file is called 'validate', the file contains forms validation immediately on the page.
     For example, if you want to add text to the image field that does not start with URL(https://) you will receive an error message in red and you will not be able to add the card until the field is arranged
 
+    Using OOP (Object Oriented Programming), connection index.js to Modules (Card, FormValidator, utils).
+
 **Figma**
 
 * [Link to the project in Figma -1](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
