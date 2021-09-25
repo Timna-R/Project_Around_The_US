@@ -52,6 +52,7 @@ const inputCardTitle = document.querySelector(".popup__input_type_card-title");
 const inputImage = document.querySelector(".popup__input_type_image");
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about");
+const cardTemplate = document.querySelector("#card-template")
 const cardsList = document.querySelector(".cards");
 
 const submitProfileForm = () => {
@@ -67,13 +68,14 @@ const addCardformValidator = new FormValidator(settingsObj, addCardForm);
 addCardformValidator.enableValidation()
 
 initialCards.forEach((item) => {
-  const card = new Card(item, "#card-template");
+  const card = new Card(item, cardTemplate);
   const cardElement = card.getCardElement();
   cardsList.prepend(cardElement);
 });
 
 editButton.addEventListener("click", () => {
   openPopup(editPopup);
+  editformValidator.resetValidation();
   const nameValue = profileName.textContent;
   const aboutValue = profileAbout.textContent;
   inputName.value = nameValue;
@@ -82,6 +84,7 @@ editButton.addEventListener("click", () => {
 
 addCardButton.addEventListener("click", () => {
   openPopup(addCardPopup);
+  addCardformValidator.resetValidation();
   addCardForm.reset();
 });
 
@@ -93,17 +96,15 @@ closeImageButton.addEventListener("click", () => closePopup(popupImage));
 
 editForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  editformValidator.resetValidation();
   submitProfileForm();
   closePopup(editPopup);
 });
 
 addCardForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  addCardformValidator.resetValidation();
   const card = new Card(
     { name: inputCardTitle.value, link: inputImage.value },
-    "#card-template"
+    cardTemplate
   );
   const cardElement = card.getCardElement();
   cardsList.prepend(cardElement);
@@ -111,10 +112,8 @@ addCardForm.addEventListener("submit", (e) => {
 });
 
 document.addEventListener("mouseup", (evt) => {
-  const popupOpened = document.querySelector(".popup_open");
-  if (popupOpened) {
-    if (evt.target === popupOpened) {
-      closePopup(popupOpened);
-    }
+  const openedPopup = document.querySelector(".popup_open");
+  if (evt.target === openedPopup) {
+    closePopup(openedPopup);
   }
 });

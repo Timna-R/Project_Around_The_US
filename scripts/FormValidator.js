@@ -1,11 +1,11 @@
 export class FormValidator {
-    constructor(setting, formElement) {
-      this._setting = setting;
+    constructor(settings, formElement) {
+      this._settings = settings;
       this._formElement = formElement;
     }
   
     _showInputError = (inputElement, errorMessage) => {
-      const { inputErrorClass, errorClass } = this._setting;
+      const { inputErrorClass, errorClass } = this._settings;
       const errorElement = this._formElement.querySelector(
         `#${inputElement.id}-error`
       );
@@ -16,7 +16,7 @@ export class FormValidator {
     };
   
     _hideInputError = (inputElement) => {
-      const { inputErrorClass, errorClass } = this._setting;
+      const { inputErrorClass, errorClass } = this._settings;
       const errorElement = this._formElement.querySelector(
         `#${inputElement.id}-error`
       );
@@ -38,12 +38,12 @@ export class FormValidator {
       this._formInputs.some((inputElement) => !inputElement.validity.valid);
   
     _toggleButtonState = () => {
-      const { inactiveButtonClass } = this._setting;
+      const { inactiveButtonClass } = this._settings;
       const submitButtonSelector =
-        this._formElement.querySelector(this._setting.submitButtonSelector);
+        this._formElement.querySelector(this._settings.submitButtonSelector);
   
       if (this._hasInvalidInput(this._formInputs)) {
-        submitButtonSelector.disabled = "disabled";
+        submitButtonSelector.disabled = true;
         submitButtonSelector.classList.add(inactiveButtonClass);
       } else {
         submitButtonSelector.disabled = false;
@@ -61,16 +61,14 @@ export class FormValidator {
     };
     
     resetValidation() {
-        this._formInputs.forEach (input => {
-            this._hideInputError(input);
-        });
+        this._formInputs.forEach(this._hideInputError);
     }
     
     enableValidation = () => {
       this._formElement.addEventListener("submit", (evt) => evt.preventDefault());
 
       this._formInputs = Array.from(
-        this._formElement.querySelectorAll(this._setting.inputSelector)
+        this._formElement.querySelectorAll(this._settings.inputSelector)
       );
 
       this._toggleButtonState();

@@ -1,12 +1,10 @@
 import { popupImage, openPopup } from "./utils.js";
 
 export class Card {
-  constructor(data, templateCard) {
+  constructor(data, cardTemplateSelector) {
     this._image = data.link;
     this._text = data.name;
-    this._templateCard = document
-      .querySelector(templateCard)
-      .content.querySelector(".cards__item");
+    this._cardTemplate = cardTemplateSelector.content.querySelector(".cards__item");
   }
 
   _handledeleteCard = () => {
@@ -28,7 +26,7 @@ export class Card {
   };
 
   getCardElement = () => {
-    this._cardElement = this._templateCard.cloneNode(true);
+    this._cardElement = this._cardTemplate.cloneNode(true);
     const cardImage = this._cardElement.querySelector(".cards__image");
     const cardTitle = this._cardElement.querySelector(".cards__title");
     const deleteButton = this._cardElement.querySelector(".cards__delete");
