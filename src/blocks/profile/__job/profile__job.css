@@ -1,4 +1,4 @@
-.profile__about {
+.profile__job {
     margin: 0;
     max-width: 373px;
     font-family: 'Inter', Arial, sans-serif;
@@ -13,13 +13,13 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .profile__about {
+    .profile__job {
         max-width: 287px;
     }
 }
 
 @media screen and (max-width: 630px) {
-    .profile__about {
+    .profile__job {
         max-width: 240px;
         font-size: 14px;
         line-height: 17px;

@@ -3,6 +3,7 @@
 ### Overview
 * Intro
 * Description of the project
+* Webpack
 * Figma
 * Images
 * GitHub
@@ -33,7 +34,13 @@
     Another javascreept file is called 'validate', the file contains forms validation immediately on the page.
     For example, if you want to add text to the image field that does not start with URL(https://) you will receive an error message in red and you will not be able to add the card until the field is arranged
 
-    Using OOP (Object Oriented Programming), connection index.js to Modules (Card, FormValidator, utils).
+    Using OOP (Object Oriented Programming), connection index.js to folders and modules according to OOP.
+    Each module follows a different task in the code.
+
+**Webpack**
+
+   Connecting the project to Webpack.
+   Webpack is a bundling of tools that creates miniature style sheets from our project, performs browser-compliant JavaScript and CSS code.
 
 **Figma**
 
