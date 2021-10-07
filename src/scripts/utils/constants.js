@@ -47,9 +47,5 @@ export const themeCardPopup = ".popup_theme_add-card";
 export const addCardForm = document
   .querySelector(themeCardPopup)
   .querySelector(".popup__form");
-export const inputCardTitle = document.querySelector(
-  ".popup__input_type_card-title"
-);
-export const inputImage = document.querySelector(".popup__input_type_image");
 export const cardTemplate = document.querySelector("#card-template");
 export const cardsSelector = ".cards";

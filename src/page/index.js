@@ -19,8 +19,6 @@ import {
   addCardButton,
   themeCardPopup,
   addCardForm,
-  inputCardTitle,
-  inputImage,
   cardTemplate,
   cardsSelector,
 } from "../scripts/utils/constants.js";
@@ -52,7 +50,7 @@ editButton.addEventListener("click", () => {
 
 const createCard = (data) => {
   const card = new Card(data, cardTemplate, () => {
-    popupImage.open(item);
+    popupImage.open(data);
   });
   return card.getCardElement()
 }
@@ -60,8 +58,7 @@ const createCard = (data) => {
 const addCardPopup = new PopupWithForm(themeCardPopup, () => {
   const data = addCardPopup.getInputValues();
   const newCard = createCard(data);
-  console.log(newCard)
-  cardsLists.addItem(newCard)
+  cardsLists.addItem(newCard);
   addCardPopup.close();
 })
 
