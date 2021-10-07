@@ -26,9 +26,8 @@ export default class Popup {
         this.close();
       });
 
-    document.addEventListener("mouseup", (evt) => {
-      const openedPopup = document.querySelector(".popup_open");
-      if (evt.target === openedPopup) {
+    this._popupElement.addEventListener("mouseup", (evt) => {
+      if (evt.target === this._popupElement) {
         this.close();
       }
     });

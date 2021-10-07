@@ -40,8 +40,8 @@ export const editForm = document
   .querySelector(".popup__form");
 export const inputName = document.querySelector(".popup__input_type_name");
 export const inputJob = document.querySelector(".popup__input_type_job");
-export const profileName = document.querySelector(".profile__name");
-export const profileJob = document.querySelector(".profile__job");
+export const profileNameSelector = ".profile__name";
+export const profileJobSelector = ".profile__job";
 export const addCardButton = document.querySelector(".profile__add-button");
 export const themeCardPopup = ".popup_theme_add-card";
 export const addCardForm = document

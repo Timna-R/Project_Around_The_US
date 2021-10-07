@@ -15,19 +15,23 @@ export class Card {
   _handleLikeButtonClick = () =>
     this._likeButton.classList.toggle("cards__heart-like_full");
 
+  _setEventListeners() {
+    this._likeButton.addEventListener("click", this._handleLikeButtonClick);
+    this._deleteButton.addEventListener("click", this._handledeleteCard);
+    this._cardImage.addEventListener("click", this._handleCardClick);
+  }
+
   getCardElement = () => {
     this._cardElement = this._cardTemplate.cloneNode(true);
-    const cardImage = this._cardElement.querySelector(".cards__image");
-    const cardTitle = this._cardElement.querySelector(".cards__title");
-    const deleteButton = this._cardElement.querySelector(".cards__delete");
+    this._cardImage = this._cardElement.querySelector(".cards__image");
+    this._cardTitle = this._cardElement.querySelector(".cards__title");
+    this._deleteButton = this._cardElement.querySelector(".cards__delete");
     this._likeButton = this._cardElement.querySelector(".cards__heart-like");
 
-    cardImage.style.backgroundImage = `url(${this._image})`;
-    cardTitle.textContent = this._text;
+    this._cardImage.style.backgroundImage = `url(${this._image})`;
+    this._cardTitle.textContent = this._text;
 
-    this._likeButton.addEventListener("click", this._handleLikeButtonClick);
-    deleteButton.addEventListener("click", this._handledeleteCard);
-    cardImage.addEventListener("click", this._handleCardClick);
+    this._setEventListeners();
 
     return this._cardElement;
   };
