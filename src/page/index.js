@@ -56,8 +56,9 @@ const createCard = (data) => {
   });
   return card.getCardElement()
 }
-// 
-const addCardPopup = new PopupWithForm(themeCardPopup, (data) => {
+
+const addCardPopup = new PopupWithForm(themeCardPopup, () => {
+  const data = addCardPopup.getInputValues();
   const newCard = createCard(data);
   console.log(newCard)
   cardsLists.addItem(newCard)
