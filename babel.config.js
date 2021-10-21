@@ -1,6 +1,6 @@
 const presets = [
-    ['@babel/preset-env', { // preset you want to use
-      targets: { // browser versions in which we want our code supported
+    ['@babel/preset-env', {
+      targets: { 
         edge: '17',
         ie: '11',
         firefox: '50',
@@ -8,11 +8,11 @@ const presets = [
         safari: '11.1'
       },
 
-    // use polyfills for the browsers specified in the above targets option
-    // Babel uses polyfills from the core-js library
     useBuiltIns: "entry",
     corejs: '^3',
   }]
 ];
 
-module.exports = { presets }; 
+const plugins = ["@babel/plugin-transform-runtime","@babel/plugin-transform-modules-commonjs"];
+
+module.exports = { presets, plugins }; 

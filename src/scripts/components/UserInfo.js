@@ -1,5 +1,3 @@
-// import { profileName, profileJob } from "../utils/constants.js";
-
 export default class UserInfo {
   constructor(userNameSelector, jobSelector) {
     this._profileName = document.querySelector(userNameSelector);
@@ -7,7 +5,10 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return { name: this._profileName.textContent, job: this._profileJob.textContent }
+    return {
+      name: this._profileName.textContent,
+      job: this._profileJob.textContent,
+    };
   }
 
   setUserInfo(data) {

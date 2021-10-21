@@ -16,9 +16,9 @@
     margin-top: 0;
 }
 
-/* .popup__input:invalid {
-    border-bottom: 1px solid red
-} */
+.popup__input:last-of-type {
+    margin-bottom: 43px;
+}
 
 @media screen and (max-width: 630px) {
     .popup__input {

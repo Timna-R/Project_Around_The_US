@@ -2,7 +2,7 @@
     display: flex;
     max-width: 610px;
     justify-content: flex-start;
-    margin: auto 165px auto 30px;
+    margin: auto 165px auto 20px;
 }
 
 @media screen and (max-width: 1024px) {
