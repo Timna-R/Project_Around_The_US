@@ -31,16 +31,14 @@ export const editProfilePictureForm = document
   .querySelector(themeProfilePicturePopup)
   .querySelector(".popup__form");
 export const profilePictureSelector = ".profile__profile-picture";
-export const loadingDataCard = (isLoading = false) => {
-  const submitActiveButton = document.querySelector(
-    ".popup__button"
-  );
-  submitActiveButton.textContent = isLoading ? "Creating..." : "Create";
+export const popupSubmitButton = document.querySelectorAll(settingsObj.submitButtonSelector);
+export const loadingDataCard = (submitActiveButton, isLoading = false) => {
+  submitActiveButton.forEach(popupSubmitButton => {
+    popupSubmitButton.textContent = isLoading ? "Creating..." : "Create";
+  });
 };
-
-export const loadingDataInfo = (isLoading = false) => {
-  const submitActiveButton = document.querySelector(
-    ".popup__button"
-  );
-  submitActiveButton.textContent = isLoading ? "Saving..." : "Save";
+export const loadingDataInfo = (submitActiveButton, isLoading = false) => {
+  submitActiveButton.forEach(popupSubmitButton => {
+    popupSubmitButton.textContent = isLoading ? "Saving..." : "Save";
+  });
 };

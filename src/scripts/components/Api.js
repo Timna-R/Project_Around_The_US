@@ -3,7 +3,7 @@ const customFetch = (url, headers) =>
     .then((res) =>
     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
     )
-
+    
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -78,3 +78,5 @@ export const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+ 
