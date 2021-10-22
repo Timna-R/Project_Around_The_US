@@ -124,7 +124,8 @@ const createCard = (data) => {
           api.deleteCard(idCard).then(() => {
             card.removeCard();
             confirmSubmit.close();
-          });
+          })
+          .catch((err) => console.log(err));
         });
       },
 
@@ -132,11 +133,13 @@ const createCard = (data) => {
         if (card.isLike()) {
           api.disLikeCard(idCard).then((res) => {
             card.likeButtonClick(res.likes);
-          });
+          })
+          .catch((err) => console.log(err));
         } else {
           api.likeCard(idCard).then((res) => {
             card.likeButtonClick(res.likes);
-          });
+          })
+          .catch((err) => console.log(err));
         }
       },
     },
@@ -182,20 +185,13 @@ addCardButton.addEventListener("click", () => {
 
 // Get data from the API
 
-const promiseGetInitialCards = api.getInitialCards()
-  .then((res) => {
-    cardsLists.renderItems(res);
+  Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userId = userData._id;
+    userInfo.setUserInfoServer(userData);
+    cardsLists.renderItems(cards);
   })
   .catch((err) => console.log(err));
-
-const promiseGetUserInfo = api.getUserInfo()
-  .then((res) => {
-    userId = res._id;
-    userInfo.setUserInfoServer(res);
-  })
-  .catch((err) => console.log(err));
-
-  Promise.all([promiseGetUserInfo, promiseGetInitialCards])
 
 // Open Image popup
 
