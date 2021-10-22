@@ -19,7 +19,7 @@
           <div class="profile__info">
             <div>
               <h1 class="profile__name">Jacques Cousteau</h1>
-              <p class="profile__job">Witch, Magician</p>
+              <p class="profile__about">Witch, Magician</p>
             </div>
             <button type="button" class="profile__edit" aria-label="edit profile button"></button>
           </div>
@@ -42,8 +42,8 @@
       <form class="popup__form popup__form_type_edit" name="form">
         <input id="input-name" type="text" class="popup__input popup__input_type_name" name="name" placeholder="Name" minlength="2" maxlength="40">
         <span id="input-name-error"></span>
-        <input id="input-job" type="text" class="popup__input popup__input_type_job" name="job" placeholder="job" minlength="2" maxlength="200">
-        <span id="input-job-error"></span>
+        <input id="input-about" type="text" class="popup__input popup__input_type_about" name="about" placeholder="about" minlength="2" maxlength="200">
+        <span id="input-about-error"></span>
         <button type="submit" class="popup__button" aria-label="submit button">Save</button>
       </form> 
     </div>
@@ -78,7 +78,7 @@
     <button type="button" class="popup__close-button" aria-label="close button"></button>
     <h3 class="popup__title">Change profile picture</h3>
     <form class="popup__form" name="form">
-      <input id="input-profile-picture" type="url" class="popup__input popup__input_type_profile-picture" name="link" placeholder="Profile picture link" required>
+      <input id="input-profile-picture" type="url" class="popup__input popup__input_type_profile-picture" name="avatar" placeholder="Profile picture link" required>
       <span id="input-profile-picture-error"></span>
       <button type="submit" class="popup__button" aria-label="submit button">Save</button>
     </form> 

@@ -12,9 +12,9 @@ export const editForm = document
   .querySelector(themeEditPopup)
   .querySelector(".popup__form");
 export const inputName = document.querySelector(".popup__input_type_name");
-export const inputJob = document.querySelector(".popup__input_type_job");
+export const inputAbout = document.querySelector(".popup__input_type_about");
 export const profileNameSelector = ".profile__name";
-export const profileJobSelector = ".profile__job";
+export const profileAboutSelector = ".profile__about";
 export const addCardButton = document.querySelector(".profile__add-button");
 export const themeCardPopup = ".popup_theme_add-card";
 export const addCardForm = document
@@ -33,13 +33,14 @@ export const editProfilePictureForm = document
 export const profilePictureSelector = ".profile__profile-picture";
 export const loadingDataCard = (isLoading = false) => {
   const submitActiveButton = document.querySelector(
-    ".popup_open .popup__button"
+    ".popup__button"
   );
-  submitActiveButton.textContent = isLoading ? "Creating..." : "Created";
+  submitActiveButton.textContent = isLoading ? "Creating..." : "Create";
 };
+
 export const loadingDataInfo = (isLoading = false) => {
   const submitActiveButton = document.querySelector(
-    ".popup_open .popup__button"
+    ".popup__button"
   );
-  submitActiveButton.textContent = isLoading ? "Saving..." : "Saved";
+  submitActiveButton.textContent = isLoading ? "Saving..." : "Save";
 };

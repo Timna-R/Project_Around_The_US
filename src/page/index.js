@@ -7,7 +7,6 @@ import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import PopupWithSubmit from "../scripts/components/PopupWithSubmit";
 import UserInfo from "../scripts/components/UserInfo.js";
-import UserProfilePicture from "../scripts/components/UserProfilePicture";
 import { api } from "../scripts/components/Api";
 import {
   settingsObj,
@@ -15,9 +14,9 @@ import {
   themeEditPopup,
   editForm,
   inputName,
-  inputJob,
+  inputAbout,
   profileNameSelector,
-  profileJobSelector,
+  profileAboutSelector,
   addCardButton,
   themeCardPopup,
   addCardForm,
@@ -36,19 +35,20 @@ let userId;
 
 // Edit profile picture popup
 
-const profilePicture = new UserProfilePicture(profilePictureSelector);
-
 // Connection to an array of forms
 const popupEditProfilePicture = new PopupWithForm(
   themeProfilePicturePopup,
   (data) => {
     loadingDataInfo(true);
-    profilePicture.setUserProfilePicture(data); // Change profile picture
 
     api.setProfilePicture(data) // Change profile picture on Api
+      .then(() => {
+        userInfo.setUserProfilePicture(data); // Change profile picture
+        popupEditProfilePicture.close();
+      })
+      .catch((err) => console.log(err))
       .finally(() => {
         loadingDataInfo(); // loading botton
-        popupEditProfilePicture.close();
       });
   }
 );
@@ -75,16 +75,20 @@ editProfilePictureFormValidator.enableValidation();
 
 // Edit Popup user info, profile values
 
-const userInfo = new UserInfo(profileNameSelector, profileJobSelector);
+const userInfo = new UserInfo(profileNameSelector, profileAboutSelector, profilePictureSelector);
 
 // Connection to an array of forms
 const popupEdit = new PopupWithForm(themeEditPopup, (data) => {
   loadingDataInfo(true);
-  userInfo.setUserInfo(data);
-  api.setUserInfo(data) // <<
+  
+  api.setUserInfo(data)
+    .then(() => {
+      userInfo.setUserInfo(data);
+      popupEdit.close();
+    })
+    .catch((err) => console.log(err))
     .finally(() => {
       loadingDataInfo();
-      popupEdit.close();
     });
 });
 
@@ -95,7 +99,7 @@ editButton.addEventListener("click", () => {
   popupEdit.open();
   editformValidator.resetValidation();
   inputName.value = userInfo.getUserInfo().name;
-  inputJob.value = userInfo.getUserInfo().job;
+  inputAbout.value = userInfo.getUserInfo().about;
 });
 
 //  Delete card submit popup
@@ -117,7 +121,7 @@ const createCard = (data) => {
       handledeleteCard: (idCard) => {
         confirmSubmit.open();
         confirmSubmit.setAction(() => {
-          api.deleteCard(idCard).then((res) => {
+          api.deleteCard(idCard).then(() => {
             card.removeCard();
             confirmSubmit.close();
           });
@@ -150,11 +154,11 @@ const addCardPopup = new PopupWithForm(themeCardPopup, (data) => {
     .then((res) => {
       const newCard = createCard(res);
       cardsLists.addItem(newCard);
+      addCardPopup.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
       loadingDataCard();
-      addCardPopup.close();
     });
 });
 
@@ -178,18 +182,20 @@ addCardButton.addEventListener("click", () => {
 
 // Get data from the API
 
-api.getInitialCards()
+const promiseGetInitialCards = api.getInitialCards()
   .then((res) => {
     cardsLists.renderItems(res);
   })
   .catch((err) => console.log(err));
 
-api.getUserInfo()
+const promiseGetUserInfo = api.getUserInfo()
   .then((res) => {
     userId = res._id;
-    userInfo.setUserInfo({ name: res.name, job: res.about });
+    userInfo.setUserInfoServer(res);
   })
   .catch((err) => console.log(err));
+
+  Promise.all([promiseGetUserInfo, promiseGetInitialCards])
 
 // Open Image popup
 

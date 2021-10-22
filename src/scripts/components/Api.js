@@ -1,3 +1,9 @@
+const customFetch = (url, headers) =>
+  fetch(url, headers)
+    .then((res) =>
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+    )
+
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -5,77 +11,63 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return customFetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
+    })
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return customFetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
+    })
   }
 
   setUserInfo(date) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
+    return customFetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
+      method: "PATCH",
       body: JSON.stringify({
         name: date.name,
-        about: date.job,
+        about: date.about
       }),
     });
   }
 
   setProfilePicture(date) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
+    return customFetch(`${this._baseUrl}/users/me/avatar`, {
       headers: this._headers,
-      body: JSON.stringify({ avatar: date.link }),
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
-  }
+      method: "PATCH",
+      body: JSON.stringify({ avatar: date.avatar })
+    })
+}
 
   creatCard(data) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
+    return customFetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
+      method: "POST",
       body: JSON.stringify(data),
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
+    });
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return customFetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
+    });
   }
 
   likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
+    });
   }
 
   disLikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-    );
+    });
   }
 }
 
