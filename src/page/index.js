@@ -29,7 +29,9 @@ import {
   profilePictureSelector,
   loadingDataCard,
   loadingDataInfo,
-  popupSubmitButton,
+  editInfoSubmitButton,
+  ProfilePicSubmitButton,
+  addCardSubmitButton
 } from "../scripts/utils/constants.js";
 
 let userId;
@@ -40,7 +42,7 @@ let userId;
 const popupEditProfilePicture = new PopupWithForm(
   themeProfilePicturePopup,
   (data) => {
-    loadingDataInfo(popupSubmitButton, true);
+    loadingDataInfo(ProfilePicSubmitButton, true);
 
     api.setProfilePicture(data) // Change profile picture on Api
       .then(() => {
@@ -49,7 +51,7 @@ const popupEditProfilePicture = new PopupWithForm(
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        loadingDataInfo(popupSubmitButton); // loading botton
+        loadingDataInfo(ProfilePicSubmitButton); // loading botton
       });
   }
 );
@@ -80,7 +82,7 @@ const userInfo = new UserInfo(profileNameSelector, profileAboutSelector, profile
 
 // Connection to an array of forms
 const popupEdit = new PopupWithForm(themeEditPopup, (data) => {
-  loadingDataInfo(popupSubmitButton, true);
+  loadingDataInfo(editInfoSubmitButton, true);
   
   api.setUserInfo(data)
     .then(() => {
@@ -89,7 +91,7 @@ const popupEdit = new PopupWithForm(themeEditPopup, (data) => {
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      loadingDataInfo(popupSubmitButton);
+      loadingDataInfo(editInfoSubmitButton);
     });
 });
 
@@ -152,7 +154,7 @@ const createCard = (data) => {
 
 // Connection to an array of forms
 const addCardPopup = new PopupWithForm(themeCardPopup, (data) => {
-  loadingDataCard(popupSubmitButton, true);
+  loadingDataCard(addCardSubmitButton, true);
 
   api.creatCard(data)
     .then((res) => {
@@ -162,7 +164,7 @@ const addCardPopup = new PopupWithForm(themeCardPopup, (data) => {
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      loadingDataCard(popupSubmitButton);
+      loadingDataCard(addCardSubmitButton);
     });
 });
 

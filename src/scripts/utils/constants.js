@@ -31,14 +31,12 @@ export const editProfilePictureForm = document
   .querySelector(themeProfilePicturePopup)
   .querySelector(".popup__form");
 export const profilePictureSelector = ".profile__profile-picture";
-export const popupSubmitButton = document.querySelectorAll(settingsObj.submitButtonSelector);
+export const editInfoSubmitButton = editForm.querySelector(settingsObj.submitButtonSelector);
+export const ProfilePicSubmitButton = editProfilePictureForm.querySelector(settingsObj.submitButtonSelector);
+export const addCardSubmitButton = addCardForm.querySelector(settingsObj.submitButtonSelector);
 export const loadingDataCard = (submitActiveButton, isLoading = false) => {
-  submitActiveButton.forEach(popupSubmitButton => {
-    popupSubmitButton.textContent = isLoading ? "Creating..." : "Create";
-  });
+  submitActiveButton.textContent = isLoading ? "Creating..." : "Create";
 };
 export const loadingDataInfo = (submitActiveButton, isLoading = false) => {
-  submitActiveButton.forEach(popupSubmitButton => {
-    popupSubmitButton.textContent = isLoading ? "Saving..." : "Save";
-  });
+  submitActiveButton.textContent = isLoading ? "Saving..." : "Save";
 };
